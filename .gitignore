@@ -1,0 +1,6 @@
+*php*
+*Game*
+*VIS*
+package*.json
+node_modules
+jquery-validation-1.17.0
