@@ -102,8 +102,14 @@ $('.control-icon.leaflet-pm-icon-polyline')[0].addEventListener('click', (e) => 
 function drawCrossSection() {
     $('#load').show();
     let cosObj = new URLSearchParams();
-    cosObj.append('stdate', '333');
-    axios.post('./py/test.py', cosObj)
+    let config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        }
+    }
+    cosObj = { "stdate": "333" };
+    axios.post('http://127.0.0.1:5000/test', cosObj, config)
         .then(response => {
             $('#load').hide();
             console.log(response.data)

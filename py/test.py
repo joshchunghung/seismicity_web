@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 #-*- coding: utf-8 -*-
 import json
-from flask import Flask, escape, request
-app = Flask(__name__)
+from flask import Flask, escape, request, jsonify
+from flask_cors import CORS
 
-app.route('/', methods=['POST'])
-def ajax_post_view():
-    stdate = request.form.get("stdate")
-    data = {'my_data':stdate}
-    return JsonResponse(data)
+app = Flask(__name__)
+CORS(app)
+
+@app.route('/test', methods=['post'])
+def postInput():
+    stdate= request.get_json()
+    data = {'my_data':stdate.get('stdate')}
+    return jsonify(data)
+
 
 if __name__ == '__main__':
-    ajax_post_view()
-
+    app.run(debug=False)
