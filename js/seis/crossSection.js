@@ -109,7 +109,7 @@ function drawCrossSection() {
         }
     }
     cosObj = { "stdate": "333" };
-    axios.post('http://127.0.0.1:5000/test', cosObj, config)
+    axios.post('http://140.109.82.44:5000/api/test', cosObj, config)
         .then(response => {
             $('#load').hide();
             console.log(response.data)
