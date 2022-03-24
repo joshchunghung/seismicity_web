@@ -3,6 +3,9 @@ function calDateUTC() {
     let y = date.getUTCFullYear();
     let m = date.getUTCMonth();
     let d = date.getUTCDate();
+    let dayLocal = date.getDate();
+    let monthLocal = date.getMonth() + 1;
+    if (monthLocal < 10) { monthLocal = "0" + monthLocal };
     let h = date.getUTCHours();
     let M = date.getUTCMinutes();
     let s = date.getUTCSeconds();
@@ -12,8 +15,8 @@ function calDateUTC() {
     let year = date_90.getFullYear();
     if (month < 10) { month = "0" + month };
     if (day < 10) { day = "0" + day };
-    let today = year + "-" + month + "-" + day;
-
+    let todayUTC = year + "-" + month + "-" + day;
+    let todayLocal = year + "-" + monthLocal + "-" + dayLocal;
     let AddDayCount = -90;
     let dd = new Date(y, m, d, h, M, s);
     dd.setDate(dd.getDate() + AddDayCount);
@@ -22,15 +25,17 @@ function calDateUTC() {
     let dday = dd.getDate() < 10 ? "0" + dd.getDate() : dd.getDate();
     let day_90 = yy + "-" + mm + "-" + dday;
     dd = {};
-    dd['today'] = today;
+    dd['todayUTC'] = todayUTC;
     dd['day_90'] = day_90;
+    dd['todayLocal'] = todayLocal;
     return dd;
 }
 
 $(document).ready(function () {
 
     let dd = calDateUTC();
-    $("#dateto").attr("value", dd.today);
+    $("#dateUTC")[0].innerHTML = "Date (UTC+8)"
+    $("#dateto").attr("value", dd.todayLocal);
     $("#datefrom").attr("value", dd.day_90);
     get_events();
 

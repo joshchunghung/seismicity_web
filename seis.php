@@ -39,129 +39,123 @@ include("head.php");
                 <!-- right chosen -->
                 <form id="filter" class="col-lg-6 col-sm-12">
                     <!-- catalog-->
-                    <div class="panel">
-                        <div class="panel-label panel-label-corner">Catalog</div>
-                        <div class="d-flex justify-content row ">
-                            <select id="catalog" name="catalog" class="form-control  col-11">
-                                <option>Recent 90 days</option>
-                                <option>Archived</option>
-                            </select>
-
-                            <!-- help icon -->
-                            <div id="helpIcon" class="col-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                                    <path d="M0 0h24v24H0V0z" fill="none" />
-                                    <path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-                                </svg>
-                                <div class="hover col-sm-12"><b>Recent 90 days</b> : CWB Rapid Reports
-                                    <br>
-                                    <b>Archived</b> : revised by CWB. (1991-01-01~)
-                                </div>
-                            </div>
 
 
-                        </div>
-                    </div>
-                    <!-- date-->
-                    <div class="panel" id="date_panel" style="background-color: rgb(200, 200, 200)">
-                        <div class="panel-label panel-label-corner">Date (UTC) </div>
-                        <div class="text-end">
-                            <input id="datefrom" type="date" name="date" class="form-control col-lg-5 col-md-3 " min="1991-01-01" max="9999-12-31" disabled="disabled">-
-                            <input id="dateto" type="date" name="date" class="form-control col-lg-5 col-md-3 " max="9999-12-31" disabled="disabled">
-                        </div>
-                    </div>
-                    <!-- depth -->
-                    <div class="panel">
-                        <div class="panel-label panel-label-corner">Depth (km)</div>
-                        <div class="panel-tight text-end">
-                            <input type="text" class="form-control number text-end" id="depthMin" name="depth" min="0" value="0">-
-                            <input type="text" class="form-control number text-end" id="depthMax" name="depth" max="6371" value="1000">
-                        </div>
-                    </div>
-
-                    <!--Magnitude -->
-                    <div class="panel">
-                        <div class="panel-label panel-label-corner">ML</div>
-                        <div class="panel-tight text-end">
-                            <input type="text" class="form-control number text-end" id="magMin" name="mag" value="3">-
-                            <input type="text" class="form-control number text-end" id="magMax" name="mag" value="10" max="10">
-                        </div>
-                    </div>
-                    <!-- location -->
-                    <div class="panel">
-                        <div class="panel-label panel-label-corner">Location</div>
-                        <div class="panel-tight text-center">
-                            <table class="nsew-table">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <label for="lonMin">W</label>
-                                            <input type="text" size="8" class="form-control number " id="lonMin" name="lonMin" value="120">
-                                        </td>
-                                        <td>
-                                            <label for="latMax">N</label><br>
-                                            <input type="text" size="8" class="form-control number " id="latMax" name="latMax" value="26">
-                                            <br>
-                                            <input type="text" size="8" class="form-control number " id="latMin" name="latMin" value="21">
-                                            <br>
-                                            <label for="latMin">S</label>
-                                        </td>
-                                        <td>
-                                            <input type="text" size="8" class="form-control number" id="lonMax" name="lonMax" value="126">
-                                            <label for="lonMax">E</label>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- legend  function-->
-                    <div class="panel">
-                        <div class="panel-label panel-label-corner"> Functions</div>
-                        <div class="panel-tight  row ">
-                            <!-- <div class="offset-lg-5  offset-md-6  offset-sm-4"> -->
-                            <!-- <div class="text-start p-1"> -->
-                            <div class=" text-start col-lg-6  col-sm-12 marginTop">
-                                <input type="checkbox" id="Depth_legend" onclick="openLegend(0)" checked="">
-                                <b>Depth Legend</b>
-                            </div>
-                            <!-- <div class=" text-start p-1"> -->
-                            <div class="text-start col-lg-6  col-sm-12 marginTop">
-                                <input type="checkbox" id="ML_legend" onclick="openLegend(1)" checked="">
-                                <b>ML Legend</b>
-                            </div>
-                            <!-- <div class=" text-start p-1"> -->
-                            <div class="w-100"></div>
-                            <div class="text-start col-lg-6  col-sm-12">
-                                <input type="checkbox" id="grid" onclick="toggleGrid()">
-                                <b>Grid Line</b>
-                            </div>
-                            <!-- <div class=" text-start p-1"> -->
-                            <div class="text-start col-lg-6 col-sm-12">
-                                <input type="checkbox" id="fault" onclick="toggleFault()">
-                                <b>Fault Line</b>
-                            </div>
-                            <!-- </div> -->
+                    <!-- help icon -->
+                    <div id="helpIcon" class="col-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                        </svg>
+                        <div class="hover col-sm-12"><b>Recent 90 days</b> : CWB Rapid Reports
+                            <br>
+                            <b>Archived</b> : revised by CWB. (1991-01-01~)
                         </div>
                     </div>
 
 
-                    <div class="panel">
-                        <div class="panel-label panel-label-corner"> Size</div>
-                        <div class="panel-tight text-end row">
-                            <div class="col-md-12  ">
-                                <label for="circle_size "><b>Circle Size</b></label>
-                                <input type="text" class="form-control number text-end" id="circle_size" value="5">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- submit bottom-->
-                    <div class="container">
-                        <input id="submit" type="button" value="submit" class="btn btn-success" onclick="get_events()">
-                    </div>
-                </form>
             </div>
         </div>
+        <!-- date-->
+        <div class="panel" id="date_panel" style="background-color: rgb(200, 200, 200)">
+            <div id="dateUTC" class="panel-label panel-label-corner"></div>
+            <div class="text-end">
+                <input id="datefrom" type="date" name="date" class="form-control col-lg-5 col-md-3 " min="1991-01-01" max="9999-12-31" disabled="disabled">-
+                <input id="dateto" type="date" name="date" class="form-control col-lg-5 col-md-3 " max="9999-12-31" disabled="disabled">
+            </div>
+        </div>
+        <!-- depth -->
+        <div class="panel">
+            <div class="panel-label panel-label-corner">Depth (km)</div>
+            <div class="panel-tight text-end">
+                <input type="text" class="form-control number text-end" id="depthMin" name="depth" min="0" value="0">-
+                <input type="text" class="form-control number text-end" id="depthMax" name="depth" max="6371" value="1000">
+            </div>
+        </div>
+
+        <!--Magnitude -->
+        <div class="panel">
+            <div class="panel-label panel-label-corner">ML</div>
+            <div class="panel-tight text-end">
+                <input type="text" class="form-control number text-end" id="magMin" name="mag" value="3">-
+                <input type="text" class="form-control number text-end" id="magMax" name="mag" value="10" max="10">
+            </div>
+        </div>
+        <!-- location -->
+        <div class="panel">
+            <div class="panel-label panel-label-corner">Location</div>
+            <div class="panel-tight text-center">
+                <table class="nsew-table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label for="lonMin">W</label>
+                                <input type="text" size="8" class="form-control number " id="lonMin" name="lonMin" value="120">
+                            </td>
+                            <td>
+                                <label for="latMax">N</label><br>
+                                <input type="text" size="8" class="form-control number " id="latMax" name="latMax" value="26">
+                                <br>
+                                <input type="text" size="8" class="form-control number " id="latMin" name="latMin" value="21">
+                                <br>
+                                <label for="latMin">S</label>
+                            </td>
+                            <td>
+                                <input type="text" size="8" class="form-control number" id="lonMax" name="lonMax" value="126">
+                                <label for="lonMax">E</label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- legend  function-->
+        <div class="panel">
+            <div class="panel-label panel-label-corner"> Functions</div>
+            <div class="panel-tight  row ">
+                <!-- <div class="offset-lg-5  offset-md-6  offset-sm-4"> -->
+                <!-- <div class="text-start p-1"> -->
+                <div class=" text-start col-lg-6  col-sm-12 marginTop">
+                    <input type="checkbox" id="Depth_legend" onclick="openLegend(0)" checked="">
+                    <b>Depth Legend</b>
+                </div>
+                <!-- <div class=" text-start p-1"> -->
+                <div class="text-start col-lg-6  col-sm-12 marginTop">
+                    <input type="checkbox" id="ML_legend" onclick="openLegend(1)" checked="">
+                    <b>ML Legend</b>
+                </div>
+                <!-- <div class=" text-start p-1"> -->
+                <div class="w-100"></div>
+                <div class="text-start col-lg-6  col-sm-12">
+                    <input type="checkbox" id="grid" onclick="toggleGrid()">
+                    <b>Grid Line</b>
+                </div>
+                <!-- <div class=" text-start p-1"> -->
+                <div class="text-start col-lg-6 col-sm-12">
+                    <input type="checkbox" id="fault" onclick="toggleFault()">
+                    <b>Fault Line</b>
+                </div>
+                <!-- </div> -->
+            </div>
+        </div>
+
+
+        <div class="panel">
+            <div class="panel-label panel-label-corner"> Size</div>
+            <div class="panel-tight text-end row">
+                <div class="col-md-12  ">
+                    <label for="circle_size "><b>Circle Size</b></label>
+                    <input type="text" class="form-control number text-end" id="circle_size" value="5">
+                </div>
+            </div>
+        </div>
+        <!-- submit bottom-->
+        <div class="container">
+            <input id="submit" type="button" value="submit" class="btn btn-success" onclick="get_events()">
+        </div>
+        </form>
+    </div>
+    </div>
     </div>
 
 
@@ -278,10 +272,18 @@ include("head.php");
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- leaflet js -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.3.1/dist/echarts.min.js"></script> -->
+<!-- <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script> -->
+<!-- <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" rel="stylesheet" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js"></script>
+<script type="text/javascript" src="https://iclient.supermap.io/dist/leaflet/iclient-leaflet.js"></script> -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script>
 <script src="https://d3js.org/d3.v7.min.js"></script>
 
+<link rel="stylesheet" href="https://iclient.supermap.io/dist/leaflet/iclient-leaflet.min.css" />
+<script type="text/javascript" src="https://iclient.supermap.io/dist/leaflet/iclient-leaflet.js"></script>
 <!--map-->
 <script type="text/javascript" src="./js/seis/checkinput.js"></script>
 <script type="text/javascript" src="./js/seis/latlon.js"></script>
@@ -290,5 +292,6 @@ include("head.php");
 <script type="text/javascript" src="./js/seis/changemode.js"></script>
 <script type="text/javascript" src="./js/seis/Leaflet.Icon.Glyph.js"></script>
 <script type="text/javascript" src="./js/seis/crossSection.js"></script>
+<script type="text/javascript" src="./js/seis/a.js"></script>
 
 </html>

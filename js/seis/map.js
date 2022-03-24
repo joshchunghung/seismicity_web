@@ -30,10 +30,11 @@ const tileProviders = [
 
 //load the map
 let Map = L.map('Map');
+
 //  lat lon（ center, zoom）
 Map.setView([23, 121], 7);
 L.tileLayer(tileProviders[0].url, { 'attribution': tileProviders[0].attribution, 'minZoom': 6, 'maxZoom': tileProviders[0].maxZoom }).addTo(Map);
-
+// L.supermap.tiledMapLayer(tileProviders[0].url, { 'attribution': tileProviders[0].attribution, 'minZoom': 6, 'maxZoom': tileProviders[0].maxZoom }).addTo(Map);
 // change the map setting
 tile = {};
 tileProviders.forEach(function (map) {
@@ -376,26 +377,25 @@ function addLayerToMap(data, circleSize, isTesis = false) {
     }
     for (let i in data) {
         let row = data[i];
-        let colorcode = getColor(row.Depth);
+        let colorCode = getColor(row.Depth);
         let size = getSize(row.ML, circleSize);
         let marker;
         if (isTesis && (typeof (row.CWB_ID) != "undefined")) {
-            marker = L.circleMarker([row.Latitude, row.Longitude], { radius: size, color: colorcode }
+            marker = L.circleMarker([row.Latitude, row.Longitude], { radius: size, color: colorCode }
             ).bindPopup(row.Date + "<br>" + row.Time +
-                " (UTC)" + "<br>Depth: " + row.Depth + " km <br>ML: " + row.ML +
+                "<br>Depth: " + row.Depth + " km <br>ML: " + row.ML +
                 "<br>" + "<a href= https://tesis.earth.sinica.edu.tw/showDetail.php?date=" +
                 row.Date + "&time=" + row.Time + " target='_blank'>More Information</a>"
             );
         } else {
-            marker = L.circleMarker([row.Latitude, row.Longitude], { radius: size, color: colorcode }
+            marker = L.circleMarker([row.Latitude, row.Longitude], { radius: size, color: colorCode }
             ).bindPopup(row.Date + "<br>" + row.Time +
-                " (UTC)" + "<br>Depth: " + row.Depth + " km <br>ML: " + row.ML
+                "<br>Depth: " + row.Depth + " km <br>ML: " + row.ML
             );
         }
         dataLayer.addLayer(marker);
         dataLayer.addTo(Map);
     }
-
 }
 
 
@@ -563,4 +563,6 @@ function toggleFault() {
         Map.removeLayer(faultLayer);
         faultLayer.clearLayers();
     }
+
 }
+
